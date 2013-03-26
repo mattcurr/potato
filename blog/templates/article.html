@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{article.title}}</h1>
+    
+    <small>by {{article.created_by}} - {{article.created_at}} - <a href="{{article.get_absolute_edit_url}}">Edit</a></small>
+	<div class="article-list">
+	  <p>{{article.body}}<p>
+	</div>
+{% endblock %}

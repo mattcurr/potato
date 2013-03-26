@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+  <head>
+    <title>Blog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      header, footer {
+        height: 100px;
+        background: yellow;
+        
+      }
+      
+      .push {
+       height: 100px;
+      }
+      
+      .login {
+        float: right;
+      }
+      
+      .wrapper {
+        min-height: 100%;
+        margin: 0 auto -100px;
+        height: auto !important;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        overflow: hidden;
+        margin: 20px;
+      }
+      li p {
+        margin: 0;
+        max-height: 100px;
+      }
+      .logo a {
+        text-decoration: none;
+        color: black;
+      }
+      h3 {
+        display: inline;
+      }
+      h2 {
+        margin: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="logo">
+          <h3><a href="/">Potato blog</a></h3>
+          <h3><a href="/admin/submit">Submit article</a></h3>
+        </div>
+        <div class="login">
+          <a href="{{logout}}">Logout</a>
+        </div>
+      </header>
+      <div class="content">
+	    {% block content %}
+        {% endblock %}
+	  </div>
+	  <div class="push"></div>
+    </div>
+    <footer>
+      Potato blog 2013
+    </footer>
+  </body>
+</html>
+
