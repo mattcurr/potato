@@ -18,7 +18,8 @@ class Article(db.Model):
 
     def put(self, *args, **kwargs):
         self.slug = slugify(self.title).decode()
+        self.created_by = users.get_current_user()
         super(Article, self).put(*args, **kwargs)
-        
+
     def __unicode__(self):
     	return self.title

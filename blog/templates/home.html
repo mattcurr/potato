@@ -1,15 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>This is our blog</h1>
 	<div class="article-list">
 	  <ul>
+      <h2>List of all {% if not user %}published {% endif %}articles</h2>
 	  {% for article in articles %}
 		<li>
 		  <h2>
 		    <a href="{{article.get_absolute_url}}">{{article.title}}</a>
           </h2>
-          <small>by {{article.created_by}} - {{article.created_at}}</small>
+          <small>
+            by {{article.created_by}} - {{article.created_at}}
+            {% if user %}
+                 - <a href="{{article.get_absolute_edit_url}}">Edit</a>
+              	{% if not article.is_published %}
+	              (Not published)
+	            {% endif %}	
+	        {% endif %}
+          </small>
           <p>
             {{article.body}}
           </p>
