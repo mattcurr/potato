@@ -2,7 +2,17 @@
 
 {% block content %}
     <form method="post" action="{% if article %}{{article.get_absolute_edit_url}}{% else %}/admin/submit{% endif %}">{% csrf_token %}
-    	{{form.as_p}}
+        <table>
+            <tbody>
+                {% for field in form %}
+                    <tr>
+                        <th>{{ field.label_tag }}:</th>
+                        <td>{{ field }}</td>
+                    </tr>
+                    <tr>{{ field.errors }}</tr>
+                {% endfor %}
+            </tbody>
+        </table>
     	<button type="submit">Submit</button> 
     	{% if article %}<button type="submit" name="delete">Delete</button>{% endif %}
     </form>
